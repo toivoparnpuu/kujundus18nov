@@ -1,5 +1,5 @@
-import './App.css';
-import { Bar } from 'react-chartjs-2';
+import React from 'react';
+import {Bar} from 'react-chartjs-2';
 
 import {
   Chart as ChartJS,
@@ -23,19 +23,41 @@ ChartJS.register(
   Legend,
   Filler
 );
-function App() {
-  //console.log(Bar)
-  const pikkused = [178, 166, 189];
-  const nimed = ['Juku', 'Kati', 'Mati'];
 
+
+//npm install react-chartjs-2 chart.js
+//const pikkused=[170, 160, 167];
+const eesnimed=["Juku", "Kati", "Madis"];
+
+function App2() {
+  //todo lisa nimede järgi pluss ja miinus nupud suurendamiseks ja vähendamiseks
+  const [pikkused, muudaPikkused]=React.useState([170, 160, 167]);
+  function uuendaPikkus(nr, operaator){
+
+	  let pikkusteKoopia=[...pikkused];
+	  //pikkusteKoopia[nr]+=1;
+    if(operaator==="miinus"){
+      pikkusteKoopia[nr]-=1;
+    } else {
+      pikkusteKoopia[nr]+=1;
+    }
+	  muudaPikkused(pikkusteKoopia);
+  }
   return (
     <div>
-      <Bar data={{ 
-        labels: nimed, datasets: [{ label: 'Pikkus', data: pikkused }] }} />
-
-
+     <div style={{"width":"60%"}}><Bar data={{
+		 datasets:[
+		 {label: "Inimeste pikkused",
+		  data: pikkused
+		  }
+		 ],
+         labels: eesnimed 		 
+	 }} /></div>
+	 <ul>{eesnimed.map((eesnimi, indeks) => 
+	   <li key={indeks} >{eesnimi} <button onClick={() => uuendaPikkus(indeks, "pluss")}>Suurenda</button> <button onClick={() => uuendaPikkus(indeks, "miinus")}>Vähenda</button></li>)}
+	 </ul>
     </div>
   );
 }
 
-export default App;
+export default App2;
