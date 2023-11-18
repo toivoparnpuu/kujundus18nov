@@ -5,6 +5,9 @@
 Rakenduse loomiseks kasutasin:
 npx create-react-app kujundus18nov
 
+teise sammuna lisasin
+npm i react-chartjs-2 chart.js
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
