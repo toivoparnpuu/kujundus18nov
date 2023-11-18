@@ -1,5 +1,5 @@
 import React from 'react';
-import {Bar} from 'react-chartjs-2';
+import {Pie} from 'react-chartjs-2';
 
 import {
   Chart as ChartJS,
@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
   Filler,
+  ArcElement
 } from "chart.js";
 
 ChartJS.register(
@@ -21,7 +22,8 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
+  ArcElement
 );
 
 
@@ -45,7 +47,7 @@ function App2() {
   }
   return (
     <div>
-     <div style={{"width":"60%"}}><Bar data={{
+     <div style={{"width":"60%"}}><Pie data={{
 		 datasets:[
 		 {label: "Inimeste pikkused",
 		  data: pikkused
